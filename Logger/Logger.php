@@ -1,8 +1,8 @@
 <?php
 
 class Logger {
-  public $directory =  __DIR__ . '/..' . '/Logs';
-  public $fileName = '/log.php';
+  protected $directory =  __DIR__ . '/..' . '/Logs';
+  protected $fileName = '/log.php';
 
   public function __invoke($text){
     if (!file_exists($this->directory)) { 
