@@ -14,5 +14,7 @@ $graph = [
   '5' => ['3', '4', '6'],
 ];
 
+$logger = new Logger();
 $graph = new Graph($graph);
-$graph->findPath('1', '3');
+
+$logger($graph->findPath('1', '3'));

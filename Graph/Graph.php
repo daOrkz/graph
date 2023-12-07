@@ -39,7 +39,7 @@ class Graph {
       }
     }
 
-    $this->resultFindPath($startNode, $destination);
+    return $this->resultFindPath($startNode, $destination);
   }
 
   protected function unvisitedNodes(){
@@ -49,19 +49,24 @@ class Graph {
   }
 
   protected function resultFindPath(string $startNode, string $destination){
+    $text = '';
+
     if (isset($this->path[$destination])){
+
       $countJump = count($this->path[$destination]);
-      echo PHP_EOL . "Из {$startNode} в {$destination} путь составит {$countJump} ходов" . PHP_EOL ;
+      $text .= "Из {$startNode} в {$destination} путь составит {$countJump} ходов" . "\n" ;
 
       $str = ' ';
 
       foreach ($this->path[$destination] as $node){
-        echo $node . $str;
+        $text .= $node . $str;
       }
-      echo $destination . PHP_EOL;
+      $text .= $destination . "\n";
     } else {
-      echo PHP_EOL . "Из {$startNode} в {$destination} пути нет!" . PHP_EOL ;
+      $text .= "Из {$startNode} в {$destination} пути нет!" . "\n" ;
     }
+
+    return $text;
   }
 }
 
