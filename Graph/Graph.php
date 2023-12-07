@@ -54,14 +54,18 @@ class Graph {
     if (isset($this->path[$destination])){
 
       $countJump = count($this->path[$destination]);
+
       $text .= "Из {$startNode} в {$destination} путь составит {$countJump} ходов" . "\n" ;
 
       $str = ' ';
 
-      foreach ($this->path[$destination] as $node){
-        $text .= $node . $str;
-      }
-      $text .= $destination . "\n";
+      // foreach ($this->path[$destination] as $node){
+      //   $text .= $node . $str;
+      // }
+      $text .= implode('->', $this->path[$destination]);
+
+      $text .= "->{$destination}" . "\n";
+
     } else {
       $text .= "Из {$startNode} в {$destination} пути нет!" . "\n" ;
     }
