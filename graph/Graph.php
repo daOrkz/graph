@@ -1,27 +1,23 @@
 <?php
 
-$graph = array(
-  'A' => array('B', 'F'),
-  'B' => array('A', 'D', 'E'),
-  'C' => array('F'),
-  'D' => array('B', 'E'),
-  'E' => array('B', 'D', 'F'),
-  'F' => array('A', 'E', 'C'),
-);
+$graph = [
+  '1' => ['2', '6'],
+  '2' => ['1', '6', '3', '4'],
+  '6' => ['1', '2', '4', '5'],
+  '4' => ['2', '3', '5', '6'],
+  '3' => ['2', '4' , '5'],
+  '5' => ['3', '4', '6'],
+];
 
 class Graph {
-  public array $visited;
-  public array $graph;
-  public array $queue = [];
+  protected array $visited;
+  protected array $graph;
+  protected array $queue = [];
 
-  public int $totalNode;
-
-  public array $path = [];
-  public array $path_2 = [];
+  protected array $path = [];
 
   public function __construct(array $graph) {
     $this->graph = $graph;
-    $this->totalNode = count($this->graph);
   }
 
   public function findPath(string $startNode, string $destination){
@@ -52,6 +48,16 @@ class Graph {
       }
     }
 
+    $this->resultFindPath($startNode, $destination);
+  }
+
+  protected function unvisitedNodes(){
+    foreach ($this->graph as $node => $elem) {
+      $this->visited[$node] = false;
+    }
+  }
+
+  protected function resultFindPath(string $startNode, string $destination){
     if (isset($this->path[$destination])){
       $countJump = count($this->path[$destination]);
       echo PHP_EOL . "Из {$startNode} в {$destination} путь составит {$countJump} ходов" . PHP_EOL ;
@@ -66,14 +72,8 @@ class Graph {
       echo PHP_EOL . "Из {$startNode} в {$destination} пути нет!" . PHP_EOL ;
     }
   }
-
-  protected function unvisitedNodes(){
-    foreach ($this->graph as $node => $elem) {
-      $this->visited[$node] = false;
-    }
-  }
 }
 
 $graph = new Graph($graph);
-$graph->findPath('A', 'E');
+$graph->findPath('1', '3');
 
