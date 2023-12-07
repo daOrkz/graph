@@ -17,4 +17,5 @@ $graph = [
 $logger = new Logger();
 $graph = new Graph($graph);
 
-$logger($graph->findPath('1', '3'));
+// $logger($graph->findPath('1', '3'));
+$logger($graph->findPath('1', '6'));
