@@ -1,11 +1,12 @@
 <?php
 
 class Graph {
-  protected array $visited;
+  protected array $visited = [];
   protected array $graph;
   protected array $queue = [];
-
   protected array $path = [];
+
+  protected Logger $logger;
 
   public function __construct(array $graph) {
     $this->graph = $graph;
@@ -71,6 +72,10 @@ class Graph {
     }
 
     return $text;
+  }
+
+  public function __get($prop){
+    return $this->$prop;
   }
 }
 
