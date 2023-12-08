@@ -5,8 +5,8 @@ require_once realpath( __DIR__ ) . '/Logger/Logger.php';
 $config = require_once realpath( __DIR__ ) . '/conf.php';
 
 
-$graph = new Graph($graph);
+$graph = new Graph($config['graph']);
 $logger = new Logger($config['directory'], $config['fileName']);
 $graph->setLogger($logger);
 
-$graph->findPath('1', '6');
+$graph->findPath('1', '5');
