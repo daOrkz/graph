@@ -9,4 +9,4 @@ $graph = new Graph($config['graph']);
 $logger = new Logger($config['directory'], $config['fileName']);
 $graph->setLogger($logger);
 
-$graph->findPath('1', '5');
+$graph->findPath('1', '6');

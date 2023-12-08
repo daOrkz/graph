@@ -1,7 +1,8 @@
 <?php
 
 class Logger {
-  protected $directory =  __DIR__ . '/..';
+  protected string $directory =  __DIR__ . '/..';
+  protected string $fileName;
  
   public function __construct(string $directory, string $fileName){
     $this->directory .= $directory;
