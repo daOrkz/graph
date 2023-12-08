@@ -1,14 +1,18 @@
 <?php
 
 class Logger {
-  static $directory =  __DIR__ . '/..' . '/Logs';
-  static $fileName = '/log.php';
+  protected $directory =  __DIR__ . '/..';
+ 
+  public function __construct(string $directory, string $fileName){
+    $this->directory .= $directory;
+    $this->fileName = $fileName;
+  }
 
-  static function writeLog($text){
-    if (!file_exists(self::$directory)) { 
-      mkdir(self::$directory, 0777, true);
+  public function writeLog($text){
+    if (!file_exists($this->directory)) { 
+      mkdir($this->directory, 0777, true);
     }
 
-    file_put_contents(self::$directory . self::$fileName, $text);
+    file_put_contents($this->directory . $this->fileName, $text);
   }
 }

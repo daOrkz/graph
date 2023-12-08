@@ -12,6 +12,10 @@ class Graph {
     $this->graph = $graph;
   }
 
+  public function setLogger(Logger $logger){
+    $this->logger = $logger;
+  }
+
   public function findPath(string $startNode, string $destination){
     $this->unvisitedNodes();
 
@@ -40,7 +44,7 @@ class Graph {
       }
     }
 
-    return $this->resultFindPath($startNode, $destination);
+    $this->resultFindPath($startNode, $destination);
   }
 
   protected function unvisitedNodes(){
@@ -71,7 +75,7 @@ class Graph {
       $text .= "Из {$startNode} в {$destination} пути нет!" . "\n" ;
     }
 
-    return $text;
+    $this->logger->writeLog($text);
   }
 
   public function __get($prop){
